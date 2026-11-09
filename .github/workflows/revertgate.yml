@@ -1,0 +1,24 @@
+name: Revertgate
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  revertgate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt pytest
+      - uses: revertgate/revertgate@v0
+        with:
+          # Only needed for private repositories.
+          license-key: ${{ secrets.REVERTGATE_LICENSE_KEY }}

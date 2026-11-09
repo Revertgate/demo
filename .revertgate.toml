@@ -1,0 +1,10 @@
+# Revertgate reads this file from the PR's BASE commit, so a PR can't relax its own check.
+test = "python -m pytest -q"
+# timeout_secs = 900        # per test run
+# per_file_limit = 8        # revert each file alone when a PR touches up to this many
+# tests = ["qa/**"]         # extra test paths, beyond the usual conventions
+# ignore = ["vendor/**"]    # paths Revertgate never checks
+
+[rules]
+# Every rule is `block`, `warn` or `off`. Run `revertgate rules` for the list.
+# no-tests = "block"
