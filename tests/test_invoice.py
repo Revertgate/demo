@@ -5,3 +5,6 @@ def test_total():
 
 def test_empty():
     assert total([]) == 0
+
+def test_discount():
+    assert total([(10, 2)], discount=50) == 10
